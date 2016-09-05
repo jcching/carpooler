@@ -27,18 +27,15 @@
       <div id="tripView" class="view">
 
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gotOnModal">Got On</button>
-        <button type="button" class="btn btn-warning">Got Off</button>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#gotOffModal">Got Off</button>
         <button type="button" class="btn btn-info">Paid Fee</button>
         <button type="button" class="btn btn-danger" id="endTripButton">End Trip</button>
 
         <hr>
-        <table class="table table-striped">
+        <table id="logTable" class="table table-striped">
+        <tbody>
           <tr><th>km</th><th>Note</th></tr>
-            <tr><td>12</td><td>John Got on</td></tr>
-            <tr><td>12</td><td>John Got on</td></tr>
-            <tr><td>12</td><td>John Got on</td></tr>
-            <tr><td>12</td><td>John Got on</td></tr>
-            <tr><td>12</td><td>John Got on</td></tr>
+        </tbody>
         </table>
 
       </div>
@@ -47,7 +44,7 @@
 
 
     </div>
-    <!-- Modal -->
+    <!-- gotOnModal -->
     <div class="modal fade" id="gotOnModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -66,6 +63,30 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" id="gotOnSubmitButton" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- gotOffModal -->
+    <div class="modal fade" id="gotOffModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h1 class="modal-title" id="myModalLabel">Got Off</h1>
+          </div>
+          <div class="modal-body">
+          <div class="form-group">
+              <label>Name</label><select class="form-control" id="nameList">
+              </select>
+              <label>Got Off At km</label>
+              <input type="number" pattern="[0-9]*" class="form-control" id="offlocationBox" placeholder="10">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="gotOffSubmitButton" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
