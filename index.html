@@ -31,6 +31,16 @@
         <button type="button" class="btn btn-info">Paid Fee</button>
         <button type="button" class="btn btn-danger" id="endTripButton">End Trip</button>
 
+        <hr>
+        <table class="table table-striped">
+          <tr><th>km</th><th>Note</th></tr>
+            <tr><td>12</td><td>John Got on</td></tr>
+            <tr><td>12</td><td>John Got on</td></tr>
+            <tr><td>12</td><td>John Got on</td></tr>
+            <tr><td>12</td><td>John Got on</td></tr>
+            <tr><td>12</td><td>John Got on</td></tr>
+        </table>
+
       </div>
 
 
@@ -43,19 +53,19 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Got On</h4>
+            <h1 class="modal-title" id="myModalLabel">Got On</h1>
           </div>
           <div class="modal-body">
             <div class="form-group">
               <label>Name</label>
               <input type="text" class="form-control" id="nameBox" placeholder="Richard">
               <label>Got On At km</label>
-              <input type="number" pattern="[0-9]*" class="form-control" id="onLocatonBox" placeholder="10">
+              <input type="number" pattern="[0-9]*" class="form-control" id="locationBox" placeholder="10">
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" id="gotOnSubmitButton" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>

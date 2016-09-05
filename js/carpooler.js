@@ -4,10 +4,14 @@ $(function() {
 	showView("startView");
 });
 
+var eventLog = [];
+var currentlyOnCar = [];
+
 
 //handler binding
 $("#newTripButton").click(tripStart);
 $("#endTripButton").click(tripEnd);
+$("#gotOnSubmitButton").click(gotOn);
 
 
 
@@ -33,6 +37,29 @@ function tripEnd() {
 	console.log(d);
 
 	showView("startView");
+}
+
+function gotOn(){
+	//should really check if stuff is filled in here
+	//but too lazy
+	var name=$("#nameBox").val();
+	var location=$("#locationBox").val();
+	var humanText = name+" got on";
+	var logEntry = {location:location, text:humanText};
+
+	eventLog.push(logEntry);
+
+	//draw the log here
+
+
+
+
+
+
+
+	console.log("Entry added:");
+	console.log(humanText);
+	$('#gotOnModal').modal('hide');
 }
 
 
