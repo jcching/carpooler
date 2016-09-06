@@ -226,6 +226,8 @@ function paidFee(){
 
 		//update ledger with 
 		updateLedger(lastLoc);
+		//draw the updated ledger
+		drawLedger();
 
 
 		$('#paidFeeModal').modal('hide');
