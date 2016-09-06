@@ -29,7 +29,9 @@
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gotOnModal">Got On</button>
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#gotOffModal">Got Off</button>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#paidFeeModal">Paid Fee</button>
-        <button type="button" class="btn btn-danger" id="endTripButton">End Trip</button>
+        <button type="button" class="btn btn-danger" id="endTripButton"  data-toggle="modal" data-target="#tripEndModal" >End Trip</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ledgerModal" >View Ledger</button>
+        
 
         <hr>
         <table id="logTable" class="table table-striped">
@@ -109,6 +111,51 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" id="paidFeeSubmitButton" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ledgerModal -->
+    <div class="modal fade" id="ledgerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h1 class="modal-title" id="myModalLabel">Ledger</h1>
+          </div>
+          <div class="modal-body">
+            <table id="ledgerTable" class="table table-striped">
+            <tbody>
+              <tr><th>Name</th><th>Cost</th></tr>
+            </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- tripEndModal -->
+    <div class="modal fade" id="tripEndModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h1 class="modal-title" id="myModalLabel">Trip End</h1>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+              <label>trip ended at km</label>
+              <input type="number" pattern="[0-9]*" class="form-control" id="endLocationBox" placeholder="10">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="tripEndSubmitButton" class="btn btn-primary">End Trip</button>
           </div>
         </div>
       </div>
