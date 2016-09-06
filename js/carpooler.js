@@ -7,6 +7,7 @@ $(function() {
 var eventLog = [];
 var currentlyOnCar = [];
 var ledger = [];
+var feeCache=0;
 
 
 //handler binding
@@ -14,7 +15,7 @@ $("#newTripButton").click(tripStart);
 $("#endTripButton").click(tripEnd);
 $("#gotOnSubmitButton").click(gotOn);
 $("#gotOffSubmitButton").click(gotOff);
-
+//paidFeeSubmitButton
 
 
 
@@ -53,11 +54,20 @@ function gotOn(){
 	var humanText = name+" got on";
 	var logEntry = {location:location, text:humanText};
 
+	//calculate new ledger entries before updating on-car list
+	updateLedger(parseInt(location));
+
 	eventLog.push(logEntry);
 	drawLog();
 
+	//update dropdown menu on "getoff"
 	currentlyOnCar.push(name);
 	drawOnCarList();
+
+	//update ledger
+	var ledgerEntry = {name:name, cost:0};
+	ledger.push(ledgerEntry);
+
 
 
 
@@ -72,14 +82,15 @@ function gotOff() {
 	// body...
 	var name=$("#nameList").val();
 	var location=$("#offlocationBox").val();
-	if(name==""||location==""){
+	if(name==""||location==""||name==null){
 		console.log("something wasn't filled in");
 	}else{
 		var humanText = name+" got off";
 		var logEntry = {location:location, text:humanText};
 
-		eventLog.push(logEntry);
-		drawLog();
+
+		//calculate new ledger entries before updating on-car list
+		updateLedger(parseInt(location));
 
 		//get them out of the oncar list
 		var index = currentlyOnCar.indexOf(name);
@@ -89,35 +100,67 @@ function gotOff() {
 		drawOnCarList();
 
 
-
-
 		console.log("Entry added:");
 		console.log(humanText);
+
+
+		eventLog.push(logEntry);
+		drawLog();
 
 		$('#gotOffModal').modal('hide');
 	}
 
 }
 
-function updateLedger() {
+function updateLedger(currentLoc) {
 	var lastLoc;
-	var currentLoc;
+	var sectionCost;
+	var personCost;
+	var peopleCount;
 	// check km since last entry
 	if (eventLog.length>0) {
 		//check if there are entries at all
-		lastLoc=eventLog[eventLog.length-2].location;
-		currentLog
+		lastLoc=parseInt(eventLog[eventLog.length-1].location);
+
+	// add any tunnel fees, then clear out the cache
+		sectionCost=currentLoc-lastLoc;
+		sectionCost=sectionCost+feeCache;
+		feeCache=0;
+	// divide by amount of people currently on car
+		//count people on car
+		peopleCount=currentlyOnCar.length;
+		personCost=sectionCost/peopleCount;
+
+	// add value to ledger entries of those on car
+	console.log("updating ledger");
+	console.log(currentLoc);
+	console.log(lastLoc);
+	console.log(sectionCost);
+	console.log(personCost);
+
+		for (var i = 0; i < currentlyOnCar.length; i++) {
+			//loop through the names on the car
+			var currentName= currentlyOnCar[i];
+			for (var j = ledger.length - 1; j >= 0; j--) {
+				if(ledger[j].name==currentlyOnCar[i]){
+					ledger[j].cost+=parseInt(personCost);
+					break;
+				}
+				//ledger[j]
+			}
+
+		}
+
+		
 
 	}
-	// add any tunnel fees
-	// divide by amount of people currently on car
-	// add value to ledger entries of those on car
 
 
 }
 
 function paidFee(){
 	//triggered whenever fees are paid, used in 
+	//feeCache;
 }
 
 

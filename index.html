@@ -28,7 +28,7 @@
 
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#gotOnModal">Got On</button>
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#gotOffModal">Got Off</button>
-        <button type="button" class="btn btn-info">Paid Fee</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#paidFeeModal">Paid Fee</button>
         <button type="button" class="btn btn-danger" id="endTripButton">End Trip</button>
 
         <hr>
@@ -87,6 +87,28 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" id="gotOffSubmitButton" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+            <!-- paidFeeModal -->
+    <div class="modal fade" id="paidFeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h1 class="modal-title" id="myModalLabel">Paid Fee</h1>
+          </div>
+          <div class="modal-body">
+          <div class="form-group">
+              <label>Cost</label>
+              <input type="number" pattern="[0-9]*" class="form-control" id="paidFeeBox" placeholder="10">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="paidFeeSubmitButton" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
